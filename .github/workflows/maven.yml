@@ -44,3 +44,4 @@ jobs:
           chmod +x ./public/scripts/startup.sh
           ./public/scripts/startup.sh
         shell: bash
+
