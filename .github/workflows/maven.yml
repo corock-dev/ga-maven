@@ -26,12 +26,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name : Run SonarQube
-      run : mvn sonar:sonar -Dsonar.projectKey=ga-maven
+    - name: Run SonarQube
+      run: mvn sonar:sonar -Dsonar.projectKey=ga-maven
                             -Dsonar.host.url=${{secrets.SONARQUBE_HOST}}
                             -Dsonar.login=${{secrets.SONARQUBE_TOKEN}}
 
-    - name : Deploy
+    - name: Deploy
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -40,6 +40,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         source: "target/*.jar"
         target: "~/"
-        rm: false
-        script_stop: true
-        run: chmod +x /home/on7/startup.sh && sh /home/on7/startup.sh
+        run: nohup  ~/java/java11/bin/java -Dserver.port=8070  -jar ~/target/ga-0.0.1-SNAPSHOT.jar  > /dev/null 2>&1 &
