@@ -40,4 +40,4 @@ jobs:
         source: "target/*.jar"
         target: "~/"
         rm: false
-        script: "~/startup.sh"
+        script: "~/script.sh"
