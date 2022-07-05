@@ -41,7 +41,7 @@ jobs:
         source: "target/*.jar"
         target: "~/"
         run: |
-          chmod +x ./public/scripts/startup.sh
-          ./public/scripts/startup.sh
+          chmod +x /home/on7/public/scripts/startup.sh
+          /home/on7/public/scripts/startup.sh
         shell: bash
 
