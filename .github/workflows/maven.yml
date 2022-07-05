@@ -32,6 +32,6 @@ jobs:
         host: ${{ secrets.SONARQUBE_HOST }}
         login: ${{ secrets.SONARQUBE_TOKEN }}
         projectKey: "ga-maven"
-        run : mvn sonar:sonar -Dsonar.projectKey=github-action
+        run : mvn sonar:sonar -Dsonar.projectKey=ga-maven
                                     -Dsonar.host.url=${{secrets.SONARQUBE_HOST}} -Dsonar.login=${{secrets.SONARQUBE_TOKEN}}
 
