@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v3
@@ -40,4 +40,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         source: "target/*.jar"
         target: "~/"
-        run: nohup  ~/java/java11/bin/java -Dserver.port=8070  -jar ~/target/ga-0.0.1-SNAPSHOT.jar  > /dev/null 2>&1 &
+        run: |
+          chmod +x ./public/scripts/startup.sh
+          ./public/scripts/startup.sh
+        shell: bash
