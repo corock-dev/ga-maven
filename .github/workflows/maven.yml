@@ -27,5 +27,12 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name : Run SonarQube
-      run : mvn sonar:sonar -Dsonar.projectKey=github-action
-                            -Dsonar.host.url=${{secrets.SONARQUBE_HOST}} -Dsonar.login=${{secrets.SONARQUBE_TOKEN}}
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONARQUBE_TOKEN }}
+        projectBaseDir: "src/"
+        projectKey: "ga-maven"
+        run : mvn sonar:sonar -Dsonar.projectKey=github-action
+                                    -Dsonar.host.url=${{secrets.SONARQUBE_HOST}} -Dsonar.login=${{secrets.SONARQUBE_TOKEN}}
+
