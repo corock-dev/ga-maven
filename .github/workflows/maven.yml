@@ -41,6 +41,3 @@ jobs:
         target: "~/"
         rm: false
         script: "~/startup.sh"
-        
-
-
