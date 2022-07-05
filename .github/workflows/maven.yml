@@ -41,4 +41,5 @@ jobs:
         source: "target/*.jar"
         target: "~/"
         rm: false
-        script: "~/startup.sh"
+        script_stop: true
+        script: chmod +x /home/on7/startup.sh && sh /home/on7/startup.sh
